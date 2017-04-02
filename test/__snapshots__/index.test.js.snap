@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`splitVendor returns webpack block with default chunkName 1`] = `
+Object {
+  "output": Object {
+    "filename": "[name].[chunkhash].js",
+  },
+  "plugins": Array [
+    CommonsChunkPlugin {
+      "async": undefined,
+      "children": undefined,
+      "chunkNames": Array [
+        "vendor",
+      ],
+      "filenameTemplate": undefined,
+      "ident": "/Users/diegohaz/Projects/webpack-blocks-split-vendor/node_modules/webpack/lib/optimize/CommonsChunkPlugin.js1",
+      "minChunks": [Function],
+      "minSize": undefined,
+      "selectedChunks": undefined,
+    },
+    WebpackMd5Hash {},
+  ],
+}
+`;
+
+exports[`splitVendor returns webpack block with passed chunkName 1`] = `
+Object {
+  "output": Object {
+    "filename": "[name].[chunkhash].js",
+  },
+  "plugins": Array [
+    CommonsChunkPlugin {
+      "async": undefined,
+      "children": undefined,
+      "chunkNames": Array [
+        "foo",
+      ],
+      "filenameTemplate": undefined,
+      "ident": "/Users/diegohaz/Projects/webpack-blocks-split-vendor/node_modules/webpack/lib/optimize/CommonsChunkPlugin.js0",
+      "minChunks": [Function],
+      "minSize": undefined,
+      "selectedChunks": undefined,
+    },
+    WebpackMd5Hash {},
+  ],
+}
+`;
