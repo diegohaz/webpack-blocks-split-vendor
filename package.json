@@ -1,6 +1,6 @@
 {
   "name": "webpack-blocks-split-vendor",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A webpack block that splits vendor javascript into separated bundle.",
   "license": "MIT",
   "repository": "diegohaz/webpack-blocks-split-vendor",
