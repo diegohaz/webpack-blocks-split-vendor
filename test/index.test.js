@@ -9,10 +9,12 @@ describe('splitVendor', () => {
   })
 
   it('returns webpack block with passed chunkName', () => {
-    expect(splitVendor('foo')(context)).toMatchSnapshot()
+    const block = splitVendor('foo')(context)
+    expect(block.plugins[0].chunkNames[0]).toBe('foo')
   })
 
   it('returns webpack block with default chunkName', () => {
-    expect(splitVendor()(context)).toMatchSnapshot()
+    const block = splitVendor()(context)
+    expect(block.plugins[0].chunkNames[0]).toBe('vendor')
   })
 })
