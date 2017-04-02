@@ -23,4 +23,4 @@ const splitVendor = (name: string = 'vendor'): any => ({ webpack }) => ({
   ],
 })
 
-export default splitVendor
+module.exports = splitVendor
