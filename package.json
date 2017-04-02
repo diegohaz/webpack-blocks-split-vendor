@@ -43,7 +43,11 @@
     "testEnvironment": "node"
   },
   "keywords": [
-    "webpack-blocks-split-vendor"
+    "webpack-blocks",
+    "webpack-blocks-split-vendor",
+    "webpack",
+    "bundle",
+    "split"
   ],
   "dependencies": {
     "webpack-md5-hash": "^0.0.5"
