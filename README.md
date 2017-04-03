@@ -6,6 +6,8 @@
 
 A webpack block that splits vendor javascript into separated bundle.
 
+*Note: It doesn't work together with HMR*
+
 ## Install
 
     $ npm install --save webpack-blocks-split-vendor
@@ -20,6 +22,14 @@ module.exports = createConfig([
   splitVendor('vendor') // It'll create a vendor.[hash].js file
 ])
 ```
+
+## How it does
+
+- changes the output filename to `[name].[chunkhash].js`;
+- creates a bundle with `node_modules/**/*.js` files with the help of [`CommonsChunkPlugin`](https://webpack.js.org/plugins/commons-chunk-plugin/);
+- uses [`webpack-md5-hash`](https://github.com/erm0l0v/webpack-md5-hash) instead of the standard webpack chunkhash so vendor bundle will have different hash from other bundles (otherwise, we would invalidate the vendor bundle cache everytime we update the app bundle, which would make this approach useless).
+
+For more details, see [`src/index.js`](src/index.js).
 
 ## API
 
