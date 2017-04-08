@@ -45,6 +45,10 @@ Returns a webpack block that splits vendor javascript bundle.
 
 Returns **any** 
 
+## Other useful webpack blocks
+
+- [`webpack-blocks-happypack`](https://github.com/diegohaz/webpack-blocks-happypack)
+
 ## License
 
 MIT © [Diego Haz](https://github.com/diegohaz)
