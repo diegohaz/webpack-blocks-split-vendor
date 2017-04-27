@@ -6,7 +6,7 @@
 
 A webpack block that splits vendor javascript into separated bundle.
 
-*Note: It doesn't work together with HMR*
+*Note: Use this only in production, because it doesn't work together with HMR.*
 
 ## Install
 
