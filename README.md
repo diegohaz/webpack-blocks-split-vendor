@@ -48,6 +48,7 @@ Returns **any**
 ## Other useful webpack blocks
 
 - [`webpack-blocks-happypack`](https://github.com/diegohaz/webpack-blocks-happypack)
+- [`webpack-blocks-server-source-map`](https://github.com/diegohaz/webpack-blocks-server-source-map)
 
 ## License
 
