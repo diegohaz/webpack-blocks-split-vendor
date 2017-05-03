@@ -14,7 +14,9 @@ const splitVendor = (options: string | Options): Function => {
   } = typeof options === 'object' ? options : { name: options, exclude: undefined }
 
   return group([
-    setOutput('[name].js'),
+    setOutput({
+      filename: '[name].js',
+    }),
     addPlugins([
       new webpack.optimize.CommonsChunkPlugin({
         minChunks: isVendor(exclude),
@@ -22,7 +24,9 @@ const splitVendor = (options: string | Options): Function => {
       }),
     ]),
     env('production', [
-      setOutput('[name].[chunkhash].js'),
+      setOutput({
+        filename: '[name].[chunkhash].js',
+      }),
       addPlugins([
         new WebpackMd5Hash(),
       ]),
