@@ -6,8 +6,6 @@
 
 A webpack block that splits vendor javascript into separated bundle.
 
-*Note: Use this only in production, because it doesn't work together with HMR.*
-
 ## Install
 
     $ npm install --save webpack-blocks-split-vendor
@@ -15,19 +13,29 @@ A webpack block that splits vendor javascript into separated bundle.
 ## Usage
 
 ```js
-const { createConfig } = require('@webpack-blocks/webpack2')
+const { createConfig, env } = require('@webpack-blocks/webpack2')
 const splitVendor = require('webpack-blocks-split-vendor')
 
 module.exports = createConfig([
-  splitVendor('vendor') // It'll create a vendor.[hash].js file
+  // creates a vendor.js file (or vendor.[chunkhash].js in production)
+  splitVendor(),
+
+  // creates a foo.js file
+  splitVendor('foo'), 
+
+  // creates a foo.js file, but keeps offline-plugin/runtime out of vendor
+  splitVendor({ name: 'foo', exclude: /offline-plugin\/runtime\.js/ })
+
+  // creates a vendor.js file, but keeps lodash and offline-plugin/runtime out of vendor
+  splitVendor({ exclude: [/lodash/, /offline-plugin\/runtime\.js/] })
 ])
 ```
 
 ## How it does
 
-- changes the output filename to `[name].[chunkhash].js`;
-- creates a bundle with `node_modules/**/*.js` files with the help of [`CommonsChunkPlugin`](https://webpack.js.org/plugins/commons-chunk-plugin/);
-- uses [`webpack-md5-hash`](https://github.com/erm0l0v/webpack-md5-hash) instead of the standard webpack chunkhash so vendor bundle will have different hash from other bundles (otherwise, we would invalidate the vendor bundle cache everytime we update the app bundle, which would make this approach useless).
+-   changes the output filename to `[name].[chunkhash].js`;
+-   creates a bundle with `node_modules/**/*.js` files with the help of [`CommonsChunkPlugin`](https://webpack.js.org/plugins/commons-chunk-plugin/);
+-   uses [`webpack-md5-hash`](https://github.com/erm0l0v/webpack-md5-hash) instead of the standard webpack chunkhash so vendor bundle will have different hash from other bundles (otherwise, we would invalidate the vendor bundle cache everytime we update the app bundle, which would make this approach useless).
 
 For more details, see [`src/index.js`](src/index.js).
 
@@ -41,14 +49,27 @@ Returns a webpack block that splits vendor javascript bundle.
 
 **Parameters**
 
--   `name` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)?**  (optional, default `'vendor'`)
+-   `options` **([string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) \| [Options](#options))** 
 
-Returns **any** 
+Returns **[Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** 
+
+### Exclude
+
+Type: ([string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) \| [RegExp](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp) \| [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)> | [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[RegExp](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp)>)
+
+### Options
+
+Type: {name: [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String), exclude: [Exclude](#exclude)?}
+
+**Properties**
+
+-   `name` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+-   `exclude` **[Exclude](#exclude)?** 
 
 ## Other useful webpack blocks
 
-- [`webpack-blocks-happypack`](https://github.com/diegohaz/webpack-blocks-happypack)
-- [`webpack-blocks-server-source-map`](https://github.com/diegohaz/webpack-blocks-server-source-map)
+-   [`webpack-blocks-happypack`](https://github.com/diegohaz/webpack-blocks-happypack)
+-   [`webpack-blocks-server-source-map`](https://github.com/diegohaz/webpack-blocks-server-source-map)
 
 ## License
 
