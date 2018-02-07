@@ -53,6 +53,7 @@
     "webpack-md5-hash": "^0.0.6"
   },
   "devDependencies": {
+    "@webpack-blocks/webpack": "^1.0.0-rc",
     "babel-cli": "^6.18.0",
     "babel-eslint": "^8.2.1",
     "babel-jest": "^22.2.0",
@@ -70,11 +71,10 @@
     "npm-watch": "^0.3.0",
     "opn-cli": "^3.1.0",
     "rimraf": "^2.6.1",
-    "webpack": "^3.8.1",
-    "webpack-blocks": "^1.0.0-rc.2"
+    "webpack": "^3.8.1"
   },
   "peerDependencies": {
-    "webpack": "2.x || 3.x",
-    "webpack-blocks": "1.x"
+    "@webpack-blocks/webpack": "^1.0.0-rc",
+    "webpack": "2.x || 3.x"
   }
 }

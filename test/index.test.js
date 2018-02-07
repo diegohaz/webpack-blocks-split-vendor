@@ -1,4 +1,4 @@
-import { createConfig } from 'webpack-blocks'
+import { createConfig } from '@webpack-blocks/webpack'
 import splitVendor from '../src'
 
 describe('splitVendor', () => {
