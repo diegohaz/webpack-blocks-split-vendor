@@ -1,5 +1,6 @@
 // @flow
-import { webpack, group, env, addPlugins, setOutput } from '@webpack-blocks/webpack2'
+import { group, env, addPlugins, setOutput } from 'webpack-blocks'
+import webpack from 'webpack'
 import WebpackMd5Hash from 'webpack-md5-hash'
 import { isVendor } from './utils'
 import type { Options } from './types'
