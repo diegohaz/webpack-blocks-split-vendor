@@ -11,8 +11,9 @@ import type { Options } from './types'
 const splitVendor = (options: string | Options): Function => {
   const {
     name = 'vendor',
+    test = /\.js$/,
     exclude,
-  } = typeof options === 'object' ? options : { name: options, exclude: undefined }
+  } = typeof options === 'object' ? options : ({ name: options }: Options)
 
   return group([
     setOutput({
@@ -20,8 +21,8 @@ const splitVendor = (options: string | Options): Function => {
     }),
     addPlugins([
       new webpack.optimize.CommonsChunkPlugin({
-        minChunks: isVendor(exclude),
         name,
+        minChunks: ({ resource }) => isVendor(resource, test, exclude),
       }),
     ]),
     env('production', [

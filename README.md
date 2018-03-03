@@ -46,7 +46,7 @@ For more details, see [`src/index.js`](src/index.js).
 #### Table of Contents
 
 -   [splitVendor](#splitvendor)
--   [Exclude](#exclude)
+-   [Condition](#condition)
 -   [Options](#options)
 
 ### splitVendor
@@ -59,18 +59,19 @@ Returns a webpack block that splits vendor javascript bundle.
 
 Returns **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** 
 
-### Exclude
+### Condition
 
-Type: ([string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) \| [RegExp](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp) \| [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;([string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) \| [RegExp](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp))>)
+Type: ([string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) \| [RegExp](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp) \| [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Condition](#condition)>)
 
 ### Options
 
-Type: {name: [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String), exclude: [Exclude](#exclude)?}
+Type: {name: [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String), test: [Condition](#condition)?, exclude: [Condition](#condition)?}
 
 **Properties**
 
 -   `name` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
--   `exclude` **[Exclude](#exclude)?** 
+-   `test` **[Condition](#condition)?** 
+-   `exclude` **[Condition](#condition)?** 
 
 ## Other useful webpack blocks
 

@@ -1,9 +1,10 @@
 // @flow
 /** */
-export type Exclude = string | RegExp | Array<string | RegExp>
+export type Condition = string | RegExp | Array<Condition>
 
 /** */
 export type Options = {
   name: string,
-  exclude?: Exclude,
+  test?: Condition,
+  exclude?: Condition,
 }
